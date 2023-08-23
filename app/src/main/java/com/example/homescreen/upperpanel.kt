@@ -37,7 +37,7 @@ fun upperpanel(){
     Column(
         verticalArrangement= Arrangement.Top,
         horizontalAlignment= Alignment.Start,
-        modifier=Modifier.fillMaxWidth().background(Color(0xFF495E57))
+        modifier=Modifier.fillMaxWidth().padding(top=50.dp).background(Color(0xFF495E57))
     ){
         Text(
             text="Little Lemon",
