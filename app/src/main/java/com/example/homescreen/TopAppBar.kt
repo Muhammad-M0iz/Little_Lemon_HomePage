@@ -29,12 +29,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment.Companion.BottomEnd
 import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.launch
 
 
@@ -82,7 +82,16 @@ fun TopNavigation() {
 
 
                     }
-                },
+                    Box(modifier=Modifier.fillMaxWidth()) {
+                        Image(
+                            painterResource(id = R.drawable.cart), contentDescription = "cart",
+                            modifier = Modifier
+                                .size(110.dp)
+                                .align(BottomEnd)
+                                .padding(top = 48.dp)
+                        )
+                    }},
+
 
                     navigationIcon = {
                     IconButton(onClick = {
@@ -110,7 +119,11 @@ fun TopNavigation() {
 
     }
 }
-
+@Composable
+@Preview(showBackground = true)
+fun upperPreview(){
+    TopNavigation()
+}
 
 
 

@@ -3,14 +3,12 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.*
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 
 
 class MainActivity: ComponentActivity() {
@@ -18,7 +16,7 @@ class MainActivity: ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            HomeScreen()
+            MyNavigation()
 
 
         }
@@ -27,14 +25,17 @@ class MainActivity: ComponentActivity() {
 @ExperimentalMaterial3Api
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun HomeScreen() {
-    Column (){
+fun MyNavigation(){
+    val navController= rememberNavController()
+NavHost(navController = navController, startDestination =LoginScreen.route ){
+composable(LoginScreen.route){
+    LoginScreen(navController)
+}
+    composable(TopAppBar.route){
         TopNavigation()
+    }
+}}
 
-
-            }
-
-        }
 
 
 
