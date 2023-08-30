@@ -1,5 +1,4 @@
 package com.example.homescreen
-
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -10,10 +9,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Email
-import androidx.compose.material.icons.filled.Face
-import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.ExitToApp
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Place
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -29,23 +30,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Alignment.Companion.BottomEnd
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import kotlinx.coroutines.launch
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopNavigation() {
+fun TopNavigation(navController: NavHostController) {
 
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
-    val items = listOf(Icons.Default.Favorite, Icons.Default.Face, Icons.Default.Email)
+    val items = listOf(Icons.Default.Home, Icons.Default.Place, Icons.Default.ExitToApp)
     val selectedItem = remember { mutableStateOf(items[0]) }
 
 
@@ -83,13 +85,22 @@ fun TopNavigation() {
 
                     }
                     Box(modifier=Modifier.fillMaxWidth()) {
-                        Image(
-                            painterResource(id = R.drawable.cart), contentDescription = "cart",
-                            modifier = Modifier
+                        Button(
+                            onClick = {
+                                navController.navigate(OrderScreen.route)
+                            },colors= ButtonDefaults.buttonColors(containerColor = Color.White),
+
+                            modifier=Modifier
+                                .align(Alignment.BottomEnd)
                                 .size(110.dp)
-                                .align(BottomEnd)
-                                .padding(top = 48.dp)
-                        )
+                                .padding(top = 35.dp)
+
+                        ){Image(
+                            painterResource(id = R.drawable.cart), contentDescription = "cart"
+                            ,modifier = Modifier
+                                .size(110.dp)
+                                .padding(top = 10.dp)
+                        )}
                     }},
 
 
@@ -119,11 +130,7 @@ fun TopNavigation() {
 
     }
 }
-@Composable
-@Preview(showBackground = true)
-fun upperPreview(){
-    TopNavigation()
-}
+
 
 
 

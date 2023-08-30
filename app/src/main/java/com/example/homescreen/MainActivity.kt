@@ -32,7 +32,10 @@ composable(LoginScreen.route){
     LoginScreen(navController)
 }
     composable(TopAppBar.route){
-        TopNavigation()
+        TopNavigation(navController)
+    }
+    composable(OrderScreen.route){
+        OrderScreen(navController)
     }
 }}
 

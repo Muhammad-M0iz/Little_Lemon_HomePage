@@ -9,3 +9,6 @@ object LoginScreen:Destinations{
 object TopAppBar:Destinations{
     override val route="TopAppBar"
 }
+object OrderScreen:Destinations{
+    override val route="OrderScreen"
+}

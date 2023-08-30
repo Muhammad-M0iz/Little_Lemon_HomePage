@@ -4,6 +4,7 @@ import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -30,18 +31,21 @@ import androidx.navigation.NavHostController
 fun LoginScreen(navController: NavHostController) {
     val context = LocalContext.current
     var username by remember {
-        mutableStateOf(TextFieldValue(""))
+        mutableStateOf(TextFieldValue("admin"))
     }
     var password by remember {
-        mutableStateOf(TextFieldValue(""))
+        mutableStateOf(TextFieldValue("admin"))
     }
     Column(
+        modifier=Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center){
+        verticalArrangement = Arrangement.Center
+    ) {
         Image(
             painterResource(id=R.drawable.logo),
             contentDescription="logo Image",
             modifier = Modifier.padding(10.dp)
+
 
 
         )
